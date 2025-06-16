@@ -29,6 +29,9 @@ import (
 	"google.golang.org/api/idtoken"
 )
 
+// Version Info
+var Commit string
+
 type CredConfig struct {
 	flAudience       string
 	flCredentialFile string
