@@ -19,6 +19,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"time"
 
 	"log"
 
@@ -49,10 +50,6 @@ type processCredentialsResponse struct {
 	SessionToken    string `json:"SessionToken"`
 	Expiration      string `json:"Expiration"`
 }
-
-const (
-	ISO8601 = "2006-01-02T15:04:05-0700"
-)
 
 var (
 	cfg = &CredConfig{}
@@ -114,7 +111,7 @@ func main() {
 		AccessKeyId:     creds.AccessKeyID,
 		SecretAccessKey: creds.SecretAccessKey,
 		SessionToken:    creds.SessionToken,
-		Expiration:      creds.Expires.Format(ISO8601),
+		Expiration:      creds.Expires.Format(time.RFC3339),
 	}
 
 	m, err := json.Marshal(resp)
