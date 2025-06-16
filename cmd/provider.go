@@ -1,4 +1,4 @@
-package awscompat
+package main
 
 import (
 	"context"
@@ -53,5 +53,4 @@ func (s *GCPProvider) Retrieve(context.Context) (creds.Credentials, error) {
 		CanExpire:       true,
 		Expires:         *stsOutput.Credentials.Expiration,
 	}, nil
-
 }

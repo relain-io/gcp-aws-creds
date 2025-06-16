@@ -25,7 +25,6 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
 	"github.com/google/uuid"
-	awscompat "github.com/salrashid123/awscompat"
 	"golang.org/x/oauth2"
 	"google.golang.org/api/idtoken"
 )
@@ -95,7 +94,7 @@ func main() {
 		log.Fatalf("Error creating google TokenSource: %v", err)
 	}
 
-	credsP, err := awscompat.NewGCPAWSCredentials(ts, cfg.flAWSRegion, &sts.AssumeRoleWithWebIdentityInput{
+	credsP, err := NewGCPAWSCredentials(ts, cfg.flAWSRegion, &sts.AssumeRoleWithWebIdentityInput{
 		RoleArn:         aws.String(cfg.flAWSArn),
 		RoleSessionName: aws.String(cfg.flAWSSessionName),
 	})
